@@ -1,3 +1,6 @@
 import sys
 
-print(f"{sys.argv[1].upper()}")
+if len(sys.argv) > 1:
+    print(f"{sys.argv[1].upper()}")
+else:
+    print("none")

@@ -9,10 +9,12 @@ R...
 \
 """
     result = checkmate(board)
-    if result:
+    if result == "Success":
         print("Success")
-    else:
+    elif result == "Fail":
         print("Fail")
+    elif result == "Error":
+        print("Error")
 
 if __name__ == "__main__":
     main()

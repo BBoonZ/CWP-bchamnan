@@ -1,23 +1,26 @@
-def checkmate(board):
-    board = board.upper()
-    board_split = board.split()
+def checkmate(board):    
     # print(len(board))
     # print(board.split())
+
+    if board == "":
+        return ("Error")
+
+    board = board.upper()
     
-    n = len(board_split)
-
-    for i in board_split:
-        if n != len(i):
-            print("Error")
-            return 0
-        if board.count('K') != 1:
-            print("Error")
-            return 0
-
+    count_k = board.count("K")
+    if count_k != 1:
+        return "Error"
+    
+    board_split = board.split()
+    total_rows = len(board_split)
+    for row in board_split:
+        if len(row) != total_rows:
+            return "Error"
 
     straight = [(-1,0), (1,0), (0,-1), (0,1)]
     diagonal = [(-1,-1), (-1,1), (1,-1), (1,1)]
 
+    n = len(board_split)
     #หา K ว่าอยู่ตำแหน่งไหน
     #R...
     #.K..
@@ -42,7 +45,7 @@ def checkmate(board):
         while 0 <= temp_i < n and 0 <= temp_j < n:
             txt = board_split[temp_i][temp_j]
             if txt in 'RQ':
-                return True
+                return "Success"
             if txt in 'PB':
                 break
             temp_i += i
@@ -59,7 +62,7 @@ def checkmate(board):
         while 0 <= temp_i < n and 0 <= temp_j < n:
             txt = board_split[temp_i][temp_j]
             if txt in 'BQ':
-                return 1
+                return "Success"
             if txt in 'RP':
                 break
             temp_i += i
@@ -72,12 +75,12 @@ def checkmate(board):
     #P...
     if 0 <= ki+1 < n and 0 <= kj-1 < n:
         if board_split[ki+1][kj-1] == 'P':
-            return True
+            return "Success"
     if 0 <= ki+1 < n and 0 <= kj+1 < n:
         if board_split[ki+1][kj+1] == 'P':
-            return True
+            return "Success"
 
-    return 0
+    return "Fail"
 # ================== ตัวอักษรบนกระดาน ==================
 #
 # K = King (ราชา)

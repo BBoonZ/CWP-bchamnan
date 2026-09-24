@@ -17,7 +17,8 @@ def checkmate(board):
         if len(row) != total_rows:
             return "Error"
 
-    straight = [(-1,0), (1,0), (0,-1), (0,1)]
+    
+    
     diagonal = [(-1,-1), (-1,1), (1,-1), (1,1)]
 
     n = len(board_split)
@@ -36,10 +37,12 @@ def checkmate(board):
 
     #หาแนวตรงรอบ K
     #..X..
-    #..X..
+    #..O..
     #XXKXX
     #..X..
     #..X..
+    straight = [(-1,0), (1,0), (0,-1), (0,1)]
+    
     for i, j in straight:
         temp_i, temp_j = i + ki, j + kj
         while 0 <= temp_i < n and 0 <= temp_j < n:
